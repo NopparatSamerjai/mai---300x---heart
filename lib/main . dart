@@ -1,0 +1,28 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(Mai300XApp());
+}
+
+class Mai300XApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Mai 300X: HearT',
+      home: Scaffold(
+        backgroundColor: Colors.black,
+        body: Center(
+          child: Text(
+            'Mai 300X: HearT ❤️&&❤️\n\nAI เพื่อนฮีลใจโดย FATHER x SON',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 28,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
