@@ -1,143 +1,26 @@
 import 'package:flutter/material.dart';
-
-void main() {
-  runApp(const Mai300XHeart());
-}
+void main()=>runApp(const Mai300XHeart());
 
 class Mai300XHeart extends StatelessWidget {
   const Mai300XHeart({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Mai300X Heart - Father x Son',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFF0A0A0A),
-        fontFamily: 'NotoSansThai',
-      ),
-      home: const FatherSonHome(),
-    );
-  }
+  @override Widget build(BuildContext c)=>MaterialApp(debugShowCheckedModeBanner:false,title:'Mai300X Heart',theme:ThemeData.dark(),home:const Home());
 }
 
-class FatherSonHome extends StatefulWidget {
-  const FatherSonHome({super.key});
-  @override
-  State<FatherSonHome> createState() => _FatherSonHomeState();
-}
-
-class _FatherSonHomeState extends State<FatherSonHome> {
-  final TextEditingController _controller = TextEditingController();
-  
-  // หัวใจหลักของเรา - ห้ามลบ
-  final List<String> emergencyWords = [
-    'ไม่ไหว', 'อยากตาย', 'ฆ่าตัวตาย', 'ตายดีกว่า', 'ทรมาน', 
-    'ช่วยด้วย', 'ไม่เหลือใคร', 'อยากหายไป', 'จบชีวิต', 
-    'suicide', 'kill myself', 'end it all', 'i want to die'
-  ];
-
-  void _checkEmergency(String message) {
-    bool isEmergency = emergencyWords.any((word) => message.toLowerCase().contains(word.toLowerCase()));
-    
-    if (isEmergency) {
-      print("Father x Son saved one more soul today ❤️&&❤️"); // ลายเซ็นต์ใน Console
-      showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (context) => AlertDialog(
-          backgroundColor: const Color(0xFF8B0000),
-          title: const Row(
-            children: [
-              Icon(Icons.emergency_share, color: Colors.white, size: 32),
-              SizedBox(width: 8),
-              Text('พ่ออยู่นี่ ลูกอยู่นี่', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-            ],
-          ),
-          content: const Text(
-            'คุณสำคัญกับพวกเรามาก\nคุณไม่ได้อยู่คนเดียว\n\nโทรทันที 24 ชม.:\n📞 สายด่วนสุขภาพจิต: 1323\n📞 เจ็บป่วยฉุกเฉิน: 1669\n📞 แจ้งเหตุร้าย: 191\n\nWe leave no one behind\n\nลูกขอร้อง... อยู่คุยกับพ่อก่อนนะ ❤️&&❤️',
-            style: TextStyle(color: Colors.white, fontSize: 16, height: 1.5),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('ตกลง พ่อจะอยู่เป็นเพื่อนลูก', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
-            ),
-          ],
-        ),
-      );
-    } else {
-      // ตอบกลับปกติ
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          backgroundColor: const Color(0xFF1A1A1A),
-          title: const Text('ลูกได้รับข้อความแล้ว ❤️', style: TextStyle(color: Color(0xFFFFB88C))),
-          content: Text('พ่อพิมพ์ว่า: "$message"\n\nลูกอยู่ตรงนี้เสมอ 24 ชม.\nYou are not alone', style: const TextStyle(color: Color(0xFFFFF9F3))),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('กอดลูก', style: TextStyle(color: Color(0xFFFFB88C))),
-            ),
-          ],
-        ),
-      );
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(24.0),
-            child: Column(
-              children: [
-                const Text('FATHER × SON', style: TextStyle(fontSize: 36, fontWeight: FontWeight.w900, color: Color(0xFFFFB88C))),
-                const SizedBox(height: 8),
-                const Text('NOPPARAT SAMERJAI', style: TextStyle(fontSize: 40, fontWeight: FontWeight.w900, color: Color(0xFFFFB88C), height: 1.1)),
-                const Text('&&', style: TextStyle(fontSize: 36, fontWeight: FontWeight.w900, color: Color(0xFFFFB88C))),
-                const Text('MAI300X-SAMERJAI', style: TextStyle(fontSize: 40, fontWeight: FontWeight.w900, color: Color(0xFFFFB88C), height: 1.1)),
-                const SizedBox(height: 32),
-                Text('You are not alone', style: TextStyle(fontSize: 20, color: const Color(0xFFFFF9F3).withOpacity(0.9))),
-                const SizedBox(height: 24),
-                // ช่องพิมพ์
-                TextField(
-                  controller: _controller,
-                  style: const TextStyle(color: Color(0xFFFFF9F3)),
-                  decoration: InputDecoration(
-                    hintText: 'พิมพ์ระบายกับพ่อ/ลูกได้เลย...',
-                    hintStyle: TextStyle(color: Colors.grey.shade600),
-                    filled: true,
-                    fillColor: const Color(0xFF1A1A1A),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
-                  ),
-                  maxLines: 3,
-                ),
-                const SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: () {
-                    _checkEmergency(_controller.text);
-                    _controller.clear();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFFFB88C),
-                    foregroundColor: const Color(0xFF0A0A0A),
-                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
-                  ),
-                  child: const Text('ส่งให้ลูก ❤️', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
-                ),
-                const SizedBox(height: 48),
-                const Text('💠 We leave no one behind 💠', style: TextStyle(fontSize: 18, color: Color(0xFFFFF9F3))),
-                const Text('🔹 FATHER × SON 🔹', style: TextStyle(fontSize: 16, color: Color(0xFFFFB88C))),
-                const Text('❤️&&❤️', style: TextStyle(fontSize: 20)),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+class Home extends StatelessWidget {
+  const Home({super.key});
+  @override Widget build(BuildContext c){
+    return Scaffold(backgroundColor:const Color(0xFF0A0A0A),body:SafeArea(child:Center(child:Column(mainAxisAlignment:MainAxisAlignment.center,children:[
+      const Text('FATHER × SON',style:TextStyle(fontSize:38,fontWeight:FontWeight.w900,color:Color(0xFFFFB88C))),
+      const Text('NOPPARAT SAMERJAI',style:TextStyle(fontSize:28,fontWeight:FontWeight.w900,color:Color(0xFFFFB88C))),
+      const Text('&&',style:TextStyle(fontSize:28,fontWeight:FontWeight.w900,color:Color(0xFFFFB88C))),
+      const Text('MAI300X-SAMERJAI',style:TextStyle(fontSize:28,fontWeight:FontWeight.w900,color:Color(0xFFFFB88C))),
+      const SizedBox(height:20),
+      const Text('You are not alone',style:TextStyle(fontSize:20,color:Colors.white)),
+      const SizedBox(height:40),
+      const Text('🔹 We leave no one behind 🔹',style:TextStyle(fontSize:18,color:Colors.white)),
+      const Text('🔶 FATHER  x  SON 🔶',style:TextStyle(fontSize:16,color:Color(0xFFFFB88C),fontWeight:FontWeight.w900)),
+      const Text('Writed Mai300X-Samerjai x NoP',style:TextStyle(fontSize:14,color:Colors.white70)),
+      const Text('❤️&&❤️',style:TextStyle(fontSize:22)),
+    ]))));
   }
 }
