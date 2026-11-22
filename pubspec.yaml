@@ -1,5 +1,5 @@
 name: mai300x_heart
-description: Mai300X Heart - Father x Son Application
+description: Father x Son - We leave no one behind
 version: 1.0.0+1
 
 environment:
@@ -8,10 +8,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
 
 flutter:
   uses-material-design: true
-  
-  assets:
-    - assets/
