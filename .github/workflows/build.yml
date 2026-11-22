@@ -36,3 +36,4 @@ jobs:
       with:
         name: Mai300X-Heart-APK
         path: build/app/outputs/flutter-apk/app-release.apk
+        
